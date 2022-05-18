@@ -3,19 +3,13 @@ class Solution
   public:
     vector<int> twoSum(vector<int>& nums, int target)
     {
-        vector<int> vec;
-        unordered_map<int,int> mp;
-        int len=nums.size();
-        for(int i=0;i<len;i++)
+        unordered_map<int, int> hash;
+        for(int i=0; i<nums.size(); i++)
         {
-            if(mp.find(target-nums[i])!=mp.end())
-            {
-                vec.push_back(mp[target-nums[i]]);
-                vec.push_back(i);
-                return vec;
-            }
-            mp[nums[i]]=i;
+            if(hash.find(target-nums[i]) != hash.end())
+                return {hash[target-nums[i]], i};
+            hash[nums[i]] = i;
         }
-        return vec;
+        return {};
     }
 };
