@@ -5,9 +5,17 @@ class Solution(object):
         :type n: int
         :rtype: float
         """
-        if n == 0: 
+        if (n == 0):
             return 1
-        if n < 0: 
-            n, x = -n, 1 / x
-        lower = self.myPow(x, n//2)
-        return lower * lower * x if n % 2 else lower * lower
+        elif (x == 0):
+            return 0
+
+        else:
+            if (n < 0):
+                return 1 / self.myPow(x, -n)
+            else:
+                temp = self.myPow(x, n//2)
+                if (n % 2 == 0):
+                    return temp * temp
+                else:
+                    return temp * temp * x
