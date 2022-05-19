@@ -5,21 +5,9 @@ class Solution(object):
         :type n: int
         :rtype: float
         """
-        if (n == 0):
+        if n == 0: 
             return 1
-        elif (x in [0, 1]) or (n == 1):
-            return x
-
-        res = 1
-        if (n < 0):
-            x = 1 / x
-            n = - (n + 1)
-            res *= x
-        while n > 0:
-            if (n % 2): # n is odd
-                res *= x
-                n -= 1
-            else: # jump 2 steps when n is even
-                x *= x
-                n //= 2
-        return res
+        if n < 0: 
+            n, x = -n, 1 / x
+        lower = self.myPow(x, n//2)
+        return lower * lower * x if n % 2 else lower * lower
