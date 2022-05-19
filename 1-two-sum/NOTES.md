@@ -1,4 +1,3 @@
-# Code
 ```cpp
 class Solution
 {
