@@ -1,4 +1,3 @@
-// Feel free to copy this class for later reuse!
 class UnionFind {
     vector<int> parent, size;
 public:
