@@ -6,10 +6,10 @@ class Solution(object):
         """
         num = set(nums)
         ans = 0
-        for x in num:
-            if x - 1 not in num:
-                curr = x + 1
-                while curr in num:
-                    curr += 1
-                ans = max(ans, curr - x)
+        for i in num:
+            if i - 1 not in num:
+                count = 1
+                while (i+count) in num:
+                    count += 1
+                ans = max(ans, count)
         return ans
