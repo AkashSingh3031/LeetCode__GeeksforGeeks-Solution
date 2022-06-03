@@ -14,30 +14,18 @@ class Solution{
     {
     	// Your code here
     	sort(arr,arr+n);
-        sort(dep,dep+n);
-        
-        int i=1;
-        int j=0;
-        int plat_needed=1;
-        int res=1;
-        
-       while(i<n && j<n)
-       {
-           if(arr[i]<=dep[j])
-           {
-           plat_needed++;
-           i++;
-           }
-           else
-           {
-               plat_needed--;
-               j++;
-           }
-           if(plat_needed>res)
-            res=plat_needed;
-           
-       }
-       return res;
+    	sort(dep,dep+n);
+    	int j=0;
+    	int ans=0;
+    	
+    	for(int i=0;i<n;i++)
+    	{
+    	    if(arr[i]<=dep[j])
+    	        ans++;
+    	    else
+    	       j++;
+    	}
+    	return ans;
     }
 };
 
