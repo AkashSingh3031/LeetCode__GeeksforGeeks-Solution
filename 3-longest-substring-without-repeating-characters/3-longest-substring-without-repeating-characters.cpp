@@ -1,5 +1,6 @@
-class Solution {
-public:
+class Solution 
+{
+  public:
     int lengthOfLongestSubstring(string s) 
     {
         vector<int> last_seen(256, -1);
