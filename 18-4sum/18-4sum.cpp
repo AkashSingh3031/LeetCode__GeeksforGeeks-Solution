@@ -8,9 +8,9 @@ public:
             return res;
         sort(nums.begin(), nums.end());
         
-        for(int i=0; i<n; i++) {
+        for(int i=0; i<n-3; i++) {
             int target3 = target-nums[i];
-            for(int j=i+1; j<n; j++) {
+            for(int j=i+1; j<n-2; j++) {
                 int target2 = target3 - nums[j];
                 int front = j+1;
                 int back = n-1;
