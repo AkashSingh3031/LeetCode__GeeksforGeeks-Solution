@@ -26,7 +26,7 @@ public:
                 l1 = l1->next;
             }
             temp->next = l2;
-            std::swap(l1,l2);
+            swap(l1,l2);
         }
         return res;
     }
