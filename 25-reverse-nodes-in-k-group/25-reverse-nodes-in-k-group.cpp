@@ -13,19 +13,17 @@ public:
     ListNode* reverseKGroup(ListNode* head, int k) {
         ListNode* temp=head;
         for(int i=0;i<k;i++) {
-            if(temp==nullptr)
+            if(temp==NULL)
                 return head;
             temp=temp->next;
         }
         
-        
-        //reverse first k nodes
-        ListNode* prev=nullptr;
         ListNode* curr=head;
-        ListNode* next=nullptr;
-        int count=0;
+        ListNode* prev=NULL;
+        ListNode* next=NULL;
         
-        while(curr && count<k) {
+        int count=0;
+        while(curr != NULL && count<k) {
             next=curr->next;
             curr->next=prev;
             prev=curr;
@@ -33,10 +31,8 @@ public:
             count++;
         }
         
-        //recursion will take care the rest
-        if(next)
-            head->next = reverseKGroup(next,k);
-        //return head of reversed list i.e., prev
+        if(next != NULL)
+            head->next = reverseKGroup(next, k);
         return prev;
     }
 };
