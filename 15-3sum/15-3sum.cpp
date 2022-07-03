@@ -11,9 +11,10 @@ public:
             if(i==0 || nums[i]!=nums[i-1]) {
                 int low = i+1;
                 int high = n-1;
+                int sum = 0 - nums[i];
 
                 while(low < high) {
-                    if((nums[low] + nums[high] + nums[i]) == 0) {
+                    if((nums[low] + nums[high]) == sum) {
                         result.push_back({nums[i],nums[low],nums[high]});
                         //skipping same elements
                         while(low<high && nums[low]==nums[low+1]) 
@@ -23,7 +24,7 @@ public:
                         low++;
                         high--;
                     }
-                    else if((nums[low] + nums[high] + nums[i]) > 0)
+                    else if((nums[low] + nums[high]) > sum)
                         high--;
                     else 
                         low++;
