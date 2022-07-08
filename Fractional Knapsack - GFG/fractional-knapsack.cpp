@@ -21,7 +21,9 @@ class Solution
 {
     public:
     bool static comparison(Item a,Item b){
-        return(((double)a.value/(double)a.weight)>((double)b.value/(double)b.weight));
+        double r1=(double)a.value/(double)a.weight;
+        double r2=(double)b.value/(double)b.weight;
+        return r1>r2;
     }
     //Function to get the maximum total value in the knapsack.
     double fractionalKnapsack(int W, Item arr[], int n)
