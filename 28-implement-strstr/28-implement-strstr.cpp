@@ -1,38 +1,36 @@
 class Solution {
-public:
-    vector<int> calc(string pat)
-    {
-        int n=pat.length();
-        vector<int> z(n,0);
-        int L=0, R=0, i=1;
-        for(;i<n;i++){
-            if(i>R){
-                L=R=i;
-                while(R<n && pat[R-L]==pat[R]) R++;
-                z[i]=R-L;
-                R--;
-            }
-            else{
-                int k=i-L;
-                if(z[k]<R-i+1) z[i]=z[k];
-                else{
-                    L=i;
-                    while(R<n && pat[R-L]==pat[R]) R++;
-                    z[i]=R-L;
-                    R--;
-                }
+public: 
+    vector<int> kmpProcess(string needle) {
+        int n = needle.size();
+        vector<int> lps(n, 0);
+        for (int i = 1, len = 0; i < n;) {
+            if (needle[i] == needle[len]) {
+                lps[i++] = ++len;
+            } else if (len) {
+                len = lps[len - 1];
+            } else {
+                lps[i++] = 0;
             }
         }
-        return z;
+        return lps;
     }
     
     int strStr(string haystack, string needle) {
-        int n=haystack.length(), m=needle.length();
-        if(m==0) return 0;
-        string res=needle+"$"+haystack; 
-        vector<int> z=calc(res);
-        for(int i=0;i<res.length();i++){
-            if(z[i]==m) return i-m-1;
+        int m = haystack.size(), n = needle.size();
+        if (!n) {
+            return 0;
+        }
+        vector<int> lps = kmpProcess(needle);
+        for (int i = 0, j = 0; i < m;) {
+            if (haystack[i] == needle[j]) { 
+                i++, j++;
+            }
+            if (j == n) {
+                return i - j;
+            }
+            if (i < m && haystack[i] != needle[j]) {
+                j ? j = lps[j - 1] : i++;
+            }
         }
         return -1;
     }
