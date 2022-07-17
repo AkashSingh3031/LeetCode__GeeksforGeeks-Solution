@@ -15,7 +15,7 @@ public:
     int checkBalance(TreeNode* root){
         if(!root)
             return 0;
-        if(!ans) // if Answer is already False then return it.
+        if(!ans)
             return 0;
         int leftSubTree = checkBalance(root->left);
         int rightSubTree = checkBalance(root->right);
