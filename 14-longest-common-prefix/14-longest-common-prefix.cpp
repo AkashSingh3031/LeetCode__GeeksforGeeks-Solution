@@ -16,7 +16,7 @@ public:
         if(n==0) return "";
         
         string ans  = "";
-        sort(begin(str), end(str));
+        sort(str.begin(), str.end());
         string a = str[0];
         string b = str[n-1];
         
